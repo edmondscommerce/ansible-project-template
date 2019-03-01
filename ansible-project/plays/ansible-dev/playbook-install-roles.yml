@@ -1,0 +1,45 @@
+- hosts: localhost
+  tasks:
+    - name: Check for uncommited work
+      shell: >
+        set -x;
+        for d in $(find {{ playbook_dir }}/../../roles/ -type d -name 'edmondscommerce.*');
+        do
+          cd $d;
+          if [[ $(git diff --shortstat 2> /dev/null | tail -n1) != "" ]];
+          then
+            printf "\n\n--------------------\n\THIS REPO IS DIRTY!!  THIS REPO IS DIRTY!!\n\n"; pwd;
+            git status;
+          fi
+        done
+      args:
+        executable: /bin/bash
+      register: uncommited
+    - debug: var=uncommited.stdout_lines
+
+- hosts: localhost
+  vars_prompt:
+    - name: nuke_roles
+      prompt: "Are you happy to proceed with nuking all teh roles (yes/no)?"
+      private: no
+
+  tasks:
+    - name: confirmation
+      fail:
+        msg: "Aborted"
+      when: nuke_roles != "yes"
+
+    - name: remove all roles
+      shell: rm -rf {{ playbook_dir }}/../../roles/*
+
+    - name: Install Galaxy Roles in the requirements.yml file
+      local_action:
+        command ansible-galaxy install \
+        --force \
+        --keep-scm-meta \
+        --role-file={{ playbook_dir }}/../../requirements.yml \
+        --roles-path={{ playbook_dir }}/../../roles
+
+    - name: Make sure the roles directory is being git ignored
+      shell: printf "*\n!.gitignore" > {{ playbook_dir }}/../../roles/.gitignore
+

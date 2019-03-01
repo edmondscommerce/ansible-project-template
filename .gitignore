@@ -1,0 +1,3 @@
+#Use this file to prevent anything sensitive from being pushed using git
+#.vagrant
+#ansible-project/vault-pass.secret
