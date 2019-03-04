@@ -3,5 +3,5 @@ This repo contains the Ansible, Vagrant and other assets related to infrastructu
 
 
 ## Edmonds Commerce Ansible Project
-This repo is based on the standard Edmonds Commerce standard infrastructure project structure.
+This repo is based on the standard Edmonds Commerce infrastructure project structure.
 [Please read the documentation here](./docs/Ansible-Project.md)

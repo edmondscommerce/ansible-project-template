@@ -1,8 +1,8 @@
 #Set the machine name
-$machineName=""
+$machineName="CHANGEME"
 
 #https://app.vagrantup.com/
-$vagrantBox=""
+$vagrantBox="centos/7"
 
 #Provide BASH commands to do basic provisioning
 $script = <<BASH
@@ -31,7 +31,7 @@ end
 
 
 
-## EXAMPLE BELOW OF WHAT THE ABOVE SHOULD BE
+## Below is an example of how this can be set out
 #Set the machine name
 #$machineName="office-fedora-test"
 
