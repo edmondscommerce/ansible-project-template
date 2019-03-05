@@ -63,12 +63,12 @@ Used for variables that are designed to be resused across multiple environments.
 In the other environemnts, symlinks are used to load files that are in this folder structure.
 
 #####ansible-project/environment/_all/group_vars
-Folder used for variables that are not dependant on the host. Other files in here could be `php.yml` or anything else
+FUsed for variables that are designed to be resused across multiple environments. Other files in here could be `php.yml` or anything else
 that would make sense to be placed together so that each of these files container variables related to their file name.
 For example, `php.yml` could have `php_version: 7.2` and other php related variables.  
 
 ######ansible-project/environment/_all/group_vars/all
-Folder used for variables that are not dependant on the target host.
+Folder used for variables that are .
 
 #######ansible-project/environment/_all/group_vars/all/vars.yml
 Place in here variables that are not dependant on the target host. An example could be a repo you always need to clone from.
