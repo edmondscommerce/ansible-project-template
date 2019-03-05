@@ -1,37 +1,12 @@
-#Ansible Project Docs
+# Ansible Project Docs
 
 This documentation is about working with this project template. Which is found here: 
 https://github.com/edmondscommerce/ansible-project-template
 
-##Setting Up New Project
-Use the following commands to set up a new project.
-Rename the `projectName` Variable as required.
+1. [Setup](Setup.md)
 
-```bash
-echo "Setting project name" 
-projectName="my-infrastructure-project"
-
-echo "Cloning Template Project" 
-git clone git@github.com:edmondscommerce/ansible-project-template.git --depth=1
-
-echo "Renaming Cloned Folder"  
-mv ansible-project-template "$projectName"
-
-echo "Entering The Project" 
-cd "$projectName"
-
-echo"Removing .git Folder"
-rm -rf .git
-
-echo "Creating Vault Secret"
-echo "vault-secret-$(openssl rand -base64 32)">./ansible-project/vault-pass.secret 
-
-echo "Fixing Readme Title"
-sed -i "s/PROJECT_NAME/$projectName/g" README.md 
-``` 
 
 ##Vagrant
-
 The root of this project is where the Vagrant related things happen.
 
 ###Vagrantfile
@@ -156,3 +131,23 @@ Documentation of the project.
 Make sure we have a symlink between between _all/group_vars/all/vars.yml and all other all/vars.yml.
 If you need to create a symlink then do the following on the commandline replacing the paths to what is needed.
 `ln -s /path/to/file /path/to/symlink`
+
+
+
+## to edit later for git
+
+ 886  git remote -v
+  887  git init
+  888  git remote add origin gitBare:/home/ec/repos/reg/reg-magento2-ansible/
+  889  git status
+  890  git add -A
+  891  git commit -m "initial commit - project started"
+  892  git push -u origin master 
+  893  history
+
+
+ 6228  cd repos/reg
+ 6229  ll
+ 6230  git init --bare reg-magento2-ansible
+ 6231  history
+
