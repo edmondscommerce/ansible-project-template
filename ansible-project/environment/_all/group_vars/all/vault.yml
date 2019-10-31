@@ -1,5 +1,0 @@
-# This file should be used to store vault encrypted variables that apply to ALL servers and across ALL environments
-# NOTE:
-# You may want to simply copy this file or use it as a template rather than symlink.
-# Ideally sensitive details (that need vaulting) should not be shared across environments.
-# It would be OK to share vaulated details across dev/vagrant etc but at the very least, prod environments should have their own vault.yml
