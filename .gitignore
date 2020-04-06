@@ -5,3 +5,5 @@
 roles/*
 facts/*
 environment/*/one-time-passwords/*
+
+!*/.gitkeep
