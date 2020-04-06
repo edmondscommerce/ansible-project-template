@@ -2,4 +2,4 @@
 .idea
 .vagrant
 ansible-project/vault-pass.secret
-
+facts_cache.json
