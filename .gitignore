@@ -1,5 +1,7 @@
-#Use this file to prevent anything sensitive from being pushed using git
+# IDE
 .idea
 .vagrant
-ansible-project/vault-pass.secret
-facts_cache.json
+*secret
+roles/*
+facts/*
+environment/*/one-time-passwords/*
