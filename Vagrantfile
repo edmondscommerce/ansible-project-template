@@ -2,7 +2,7 @@
 $machineName="CHANGEME"
 
 #https://app.vagrantup.com/
-$vagrantBox="centos/7"
+$vagrantBox="magneticone/centos-7"
 
 #Provide BASH commands to do basic provisioning
 $script = <<BASH
@@ -39,8 +39,8 @@ Vagrant.configure("2") do |config|
     # Libvirt specific
     config.vm.provider 'libvirt' do |lv|
         lv.cpu_mode = 'host-passthrough'
-        v.memory = $memory
-        v.cpus = $cpuCores
+        lv.memory = $memory
+        lv.cpus = $cpuCores
     end
 
     # LXC Specific configuration
