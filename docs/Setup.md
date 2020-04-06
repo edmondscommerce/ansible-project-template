@@ -31,17 +31,17 @@ New projects can create a vault secret (and store the secret some where safe).
 Setting up an existing project will require the original secret to be retrieved and set.
 
 The secret is stored in a file under `ansible-projects/vault-pass.secret`. 
-It is gitignored.
+It is git ignored and should never end up in source control.
 
 ### New Secret
 ```bash
 echo "Creating Vault Secret"
-echo "vault-secret-$(openssl rand -base64 32)">./ansible-project/vault-pass.secret
+echo "vault-secret-$(openssl rand -base64 32)">./ansible-project/vault.secret
 ```
 
 ### Existing Secret
 ```bash
-echo "YOURSECRETTEXT" > ansible-projects/vault-pass.secret;
+echo "YOURSECRETTEXT" > ansible-projects/vault.secret;
 ```
 
 ## Install Roles
@@ -49,7 +49,7 @@ Roles are dependencies of the project and need to be installed when first starti
 
 ```bash
 echo "Installing roles"
-(cd ansible-project && ansible-playbook plays/ansible-dev/playbook-install-roles.yml)
+ansible-galaxy install -r requirements.yml
 ```
 
 ## Vagrant
