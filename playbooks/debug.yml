@@ -3,6 +3,6 @@
 
   tasks:
     - name: Useful task
-      debug:
+      debaug:
         msg: Hello world
 
