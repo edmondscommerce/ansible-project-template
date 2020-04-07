@@ -1,0 +1,13 @@
+exclude_paths:
+  - ./files
+  - ./docs
+  - ./.vagrant
+  - ./shellscripts
+  - ./roles
+parseable: true
+quiet: false
+# rulesdir:
+# skip_list:
+# tags:
+use_default_rules: true
+verbosity: 1
