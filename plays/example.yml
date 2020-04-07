@@ -7,4 +7,3 @@
     - name: Useful task
       debug:
         msg: "Testing!"
-
