@@ -24,6 +24,19 @@ echo "Fixing Readme Title"
 sed -i "s/PROJECT_NAME/$projectName/g" README.md 
 ``` 
 
+## Ensure commit hooks are installed
+Pre-commit hooks are used to verify that your Ansible passes Ansible Lint rules.
+
+```bash
+sudo bash;
+
+# Install the pre-commit python plugin (run from your project root)
+pip install pre-commit;
+
+# Installs the pre-commit hook based on the `.pre-commit-config.yaml`
+pre-commit install
+```
+
 ## Create Vault Secret
 The vault secret is required to authenticate against hosts.
 
@@ -56,6 +69,7 @@ ansible-galaxy install -r requirements.yml
 There is a vagrant file in the root of the project.
 
 **Be sure to set the `$machineName` variable in the `Vagrantfile` before continuing!**
+
 It should correspond with the hostname set in the Ansible Project.
 
 Ensure you have Vagrant installed on your system then we need to get the machine up and running.
