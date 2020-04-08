@@ -30,11 +30,33 @@ then
     exit 1;
 fi
 
+# Don't clobber existing projects
 if [[ -d "$projectPath" ]]
 then
     echo "Project at path "${projectPath}" already exists! Aborting.";
     exit 1;
 fi
+
+echo "Checking Ansible is installed"
+ansibleVersion="$(ansible --version)"
+ansibleInstalled=$?;
+
+if [[ "$ansibleInstalled" != 0 ]]
+then
+    echo "Ansible not installed, you need to install it."
+    exit 1;
+fi
+
+pipCommand="pip --no-python-version-warning"
+
+echo "Check that the pre-commit plugin is installed";
+if [[ ! "$(${pipCommand} show pre-commit)" ]]
+then
+    echo "Pre-commit plugin not found, installing";
+    ${pipCommand} install pre-commit;
+fi
+
+
 
 echo "Cloning Template Project"
 git clone git@github.com:edmondscommerce/ansible-project-template.git "$projectPath" --depth=1
@@ -44,5 +66,8 @@ rm -rf "${projectPath}/.git"
 
 echo "Fixing Readme Title"
 sed -i "s/PROJECT_NAME/$projectName/g" "${projectPath}/README.md"
+
+echo "Installing hooks";
+$(cd ${projectPath}; pre-commit install);
 
 echo "Done! New project is available here: ${projectPath}";
