@@ -56,8 +56,6 @@ then
     ${pipCommand} install pre-commit;
 fi
 
-
-
 echo "Cloning Template Project"
 git clone git@github.com:edmondscommerce/ansible-project-template.git "$projectPath" --depth=1
 
@@ -67,7 +65,10 @@ rm -rf "${projectPath}/.git"
 echo "Fixing Readme Title"
 sed -i "s/PROJECT_NAME/$projectName/g" "${projectPath}/README.md"
 
+echo "Re-initialising git"
+(cd ${projectPath}; git init);
+
 echo "Installing hooks";
-$(cd ${projectPath}; pre-commit install);
+(cd ${projectPath}; pre-commit install);
 
 echo "Done! New project is available here: ${projectPath}";
