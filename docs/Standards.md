@@ -30,3 +30,4 @@ It is recommended that the following pages are read in the order below.
 * [Roles and Dependencies](./Standards/Roles.md)
 * [Environment Management](./Standards/Environment.md)
 * [Quality Assurance and Continuous Integration](./Standards/QA-CI.md)
+* [Migrating Existing Projects](./Standards/Migration.md)
