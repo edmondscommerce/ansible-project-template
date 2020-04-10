@@ -1,21 +1,26 @@
 # Roles and Dependencies
 
+## Composition over forking
 Where possible, roles should not be forked or extended, instead composition should be used to wrap all written roles. This prevents changes being made that breaks roles for other projects as is the case at the moment.
 
 Forking repositories should be a last resort.
 
 Composition can be accomplished using role dependencies.
+This allows Ansible Galaxy to function much like Composer in that dependencies can have dependencies, this also reduces the amount of work required to get projects bootstrapped.
 
 [https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_roles.html#role-dependencies](https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_roles.html#role-dependencies)
 
-This allows Ansible Galaxy to function much like Composer in that dependencies can have dependencies, this also reduces the amount of work required to get projects bootstrapped.
-
-For example:
-
-A Magento 2 role will have dependencies on:
-*   Geerling.mysql
-*   Geerling.php-fpm
-*   Etc
+A Magento 2 role might have:
+```yaml
+dependencies:
+    - role: geerlingguy.nginx
+      vars: #....
+    - role: lean_delivery.mysql
+      vars: #....
+    - role: geerlingguy.php-versions
+      vars: #....
+# .....
+```
 
 The role would set some sensible defaults and allow easy updates to variables in the client ansible project.
 
