@@ -1,31 +1,34 @@
 # Setup
 
 ## New Projects
-Use the following commands to set up a new project.
-Rename the `projectName` Variable as required.
+The template repository comes with a bash script that will automatically setup a new Ansible project.
 
+To get started, first clone this repository and `cd` into the project root.
+
+Run the following with the path replaced with the location you want for the project.
 ```bash
-echo "Setting project name" 
-projectName="my-infrastructure-project"
+bash shellscripts/setup.bash /opt/Projects/my-ansible-project
+```
 
-echo "Cloning Template Project" 
-git clone git@github.com:edmondscommerce/ansible-project-template.git --depth=1
+The shell script does a number of things.
+* Checks that we are placing the project in a safe place and not cloberring an existing project
+* Removes the .git directory and re-initialises so there is a clean history.
+* Ensures your environment has the pre-commit hooks plugin and installs it
+* Installs the pre-commit hooks in to the git hooks
 
-echo "Renaming Cloned Folder"  
-mv ansible-project-template "$projectName"
+## Existing Projects
+For existing projects there is an update shell script that will ensure your pre-commit hooks are working as they should.
 
-echo "Entering The Project" 
-cd "$projectName"
-
-echo "Removing .git Folder"
-rm -rf .git 
-
-echo "Fixing Readme Title"
-sed -i "s/PROJECT_NAME/$projectName/g" README.md 
-``` 
+If your project was not based on this one, there will be more steps for this to work, you will need to migrate your project
+in this case.
+ 
 
 ## Ensure commit hooks are installed
-Pre-commit hooks are used to verify that your Ansible passes Ansible Lint rules.
+Pre-commit hooks are used to verify that your Ansible passes Ansible Lint rules and that your vault is encrypted
+at the time of commit.
+
+The update script and setup script will setup your project with the hooks but you can also check this manually as well
+with the following commands.
 
 ```bash
 sudo bash;
@@ -40,10 +43,10 @@ pre-commit install
 ## Create Vault Secret
 The vault secret is required to authenticate against hosts.
 
-New projects can create a vault secret (and store the secret some where safe).
+New projects can create a vault secret (and store the secret some where safe for later).
 Setting up an existing project will require the original secret to be retrieved and set.
 
-The secret is stored in a file under `ansible-projects/vault-pass.secret`. 
+The secret is stored in a file under `ansible-projects/vault.secret`. 
 It is git ignored and should never end up in source control.
 
 ### New Secret
