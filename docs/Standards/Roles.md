@@ -24,11 +24,23 @@ dependencies:
 
 The role would set some sensible defaults and allow easy updates to variables in the client ansible project.
 
+## Installation
+
+Using the command line tool does not automatically update the requirements file, so you must add the role to the file
+and then run
+
+```bash
+ansible-galaxy install -r requirements.yml --force
+``` 
+
+to ensure that this stays up to date
+
 ## Standard Roles for Standard Tasks
 Overtime we have worked with several Role vendors, here is a short list of different roles that we use.
 
 ### Web Services
 * [Nginx: Geerling Guy](https://galaxy.ansible.com/geerlingguy/nginx)
+* [Nginx: Official Role](https://github.com/nginxinc/ansible-role-nginx)
 * [Mysql: Lean Delivery](https://galaxy.ansible.com/lean_delivery/mysql)
 * [Certbot for Lets Encrypt: Geerling Guy](https://galaxy.ansible.com/geerlingguy/certbot)
 
