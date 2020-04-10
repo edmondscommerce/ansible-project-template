@@ -46,18 +46,18 @@ The vault secret is required to authenticate against hosts.
 New projects can create a vault secret (and store the secret some where safe for later).
 Setting up an existing project will require the original secret to be retrieved and set.
 
-The secret is stored in a file under `ansible-projects/vault.secret`. 
+The secret is stored in a file under `vault.secret`. 
 It is git ignored and should never end up in source control.
 
 ### New Secret
 ```bash
 echo "Creating Vault Secret"
-echo "vault-secret-$(openssl rand -base64 32)">./ansible-project/vault.secret
+echo "vault-secret-$(openssl rand -base64 32)">./vault.secret
 ```
 
 ### Existing Secret
 ```bash
-echo "YOURSECRETTEXT" > ansible-projects/vault.secret;
+echo "YOURSECRETTEXT" > vault.secret;
 ```
 
 ## Install Roles
@@ -71,8 +71,7 @@ ansible-galaxy install -r requirements.yml
 ## Vagrant
 There is a vagrant file in the root of the project.
 
-**Be sure to set the `$machineName` variable in the `Vagrantfile` before continuing!**
-
+Be sure to set the `$machineName` variable in the [Vagrantfile](../Vagrantfile) before continuing.
 It should correspond with the hostname set in the Ansible Project.
 
 Ensure you have Vagrant installed on your system then we need to get the machine up and running.
@@ -81,14 +80,11 @@ Ensure you have Vagrant installed on your system then we need to get the machine
 vagrant up
 ```
 
-Afterwards, we need to update SSH config to allow easy connection to the machine. This will copy the required details 
-to your SSH config. 
+Afterwards, you can test your Ansible connection with the the debug playbook.
+The default inventory is set to `environment/vagrant`.
+
 ```bash
-vagrant ssh-config >> ~/.ssh/config
+ansible-playbook playbooks/debug.yml
 ```
 
-Finally, we need to chown the SSH private key to your current user.
-By default the key is created with `root` permissions meaning it can not be read.
-```bash
-sudo chown <your-user>:<your-group> ../.vagrant/machines/<machine_name>/libvirt/private_key
-```
+The SSH config to the Vagrant machine is handled using a dynamic inventory executable so no further configuration is required.
