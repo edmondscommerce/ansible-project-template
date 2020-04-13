@@ -77,6 +77,10 @@ rm -rf "${projectPath}/.git"
 echo "Fixing Readme Title"
 sed -i "s/PROJECT_NAME/$projectName/g" "${projectPath}/README.md"
 
+echo "Remove example data"
+rm -rf "${projectPath}/environment/prod/host_vars/remote-server"
+rm -rf "${projectPath}/environment/vagrant/host_vars/vagrant-machine"
+
 echo "Re-initialising git"
 (cd ${projectPath}; git init);
 
