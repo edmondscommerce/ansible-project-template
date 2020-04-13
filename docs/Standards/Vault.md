@@ -2,11 +2,14 @@
 
 ## Rules
 
-*   Vault data should be stored in a flat file (single encrypted vault), there can be multiple files in each host and group.
+*   Vault data should be stored in a flat file (single encrypted vault), there can be multiple files in each host and
+group.
 *   Vault files should only be stored within the environment directory and nowhere else.
 *   Vault files should never be decrypted to edit, use the CLI edit commands
     *   This is to avoid accidentally committing access credentials to Git
-*   See the [best practice page](https://docs.ansible.com/ansible/latest/user_guide/playbooks_best_practices.html#variables-and-vaults) for more information
+*   See the [best practice
+page](https://docs.ansible.com/ansible/latest/user_guide/playbooks_best_practices.html#variables-and-vaults) for more
+information
 
 
 ### Variables
@@ -17,6 +20,15 @@ The files that load the vault variables can be group specific (e.g. - vars/mysql
 
 All vault files should be placed into the environment directory and be encrypted using the Ansible vault commands.
 
+An example of a vault file can be seen in the [vault.yml](../../environment/vagrant/host_vars/vagrant-machine/vault.yml)
+file in the vagrant environment. It hold some example composer values that are read in the 
+[composer.yml](../../environment/vagrant/host_vars/vagrant-machine/composer.yml) file.
+
+To view these create a `vault.secret` file and put in a password of `password123` and then use the following command
+
+```bash
+ansible-vault view environment/vagrant/host_vars/vagrant-machine/vault.yml
+```
 
 ### CI and Vault Data
 
@@ -25,25 +37,20 @@ This should be enforced by both the [pre-commit hook](./QA-CI.md#pre-commit-hook
 
 ### Generating Passwords and Vaulted Variables
 
-Suggest a standardised approach to generating passwords etc and adding them to the vault - eg something like these scripts:
-
-For development environments, as much as possible passwords should not be vaulted but created on the fly using the lookup [password module](https://docs.ansible.com/ansible/latest/plugins/lookup/password.html). These should be saved into the environment directory where they will be git ignored by default. This can be used for things like MySql database password that are only used within the environment. 
+For development environments, as much as possible passwords should not be vaulted but created on the fly using the
+lookup [password module](https://docs.ansible.com/ansible/latest/plugins/lookup/password.html). These should be
+saved into the environment directory where they will be git ignored by default. This can be used for things like
+MySql database password that are only used within the environment.
 
 They should use the variable name as the filename that they will be saved to.
 
-An example of this would be as follows:
+An example of this can be seen in the in the
+[password.yml](../../environment/vagrant/host_vars/vagrant-machine/passwords.yml) file where the `admin_password`
+variable is generated this way
 
-
-```
-magento2_admin_password: >-
-  "{{
-  lookup('password',
-  '{{ inventory_dir }}/one-time-passwords/magento2-admin-password
-  length=32
-  chars=ascii_letters,digits')
-  }}"
-```
-
+As these will be generated differently on each machine, it is not possible to use these for the production deployment.
+In this case, a vaulted password has to be used as seen in the prod version of the 
+[password.yml](../../environment/prod/host_vars/remote-server/passwords.yml) file
 
 
 ### Secret
@@ -60,7 +67,8 @@ Ansible provides the ansible-vault command to work with encrypted data.
 
 The command allows viewing and editing the encrypted data.
 
-The Vault command provides all the necessary functionality to work with encrypted data providing you have the vault secret in place correctly.
+The Vault command provides all the necessary functionality to work with encrypted data providing you have the
+vault secret in place correctly.
 
 
 #### Command List
@@ -77,6 +85,7 @@ The Vault command provides all the necessary functionality to work with encrypte
 *   encrypt_string
 *   rekey
 
-Refer to the [official documentation](https://docs.ansible.com/ansible/latest/cli/ansible-vault.html) for more information
+Refer to the [official documentation](https://docs.ansible.com/ansible/latest/cli/ansible-vault.html) for more
+information
 
 
