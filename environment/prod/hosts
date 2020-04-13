@@ -1,6 +1,6 @@
-[all]
-
 [web]
+remote-server
 
 [db]
+remote-server
 

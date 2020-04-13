@@ -1,0 +1,6 @@
+[web]
+vagrant-machine
+
+[db]
+vagrant-machine
+
