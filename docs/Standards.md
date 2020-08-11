@@ -27,28 +27,24 @@ The goal is to establish a single standard approach to Ansible projects
 
 ## <a id="repository-structure">Repository name and folder Structure
 
-The repository should clearly indicate that it is an Ansible based dev ops project.
-Naming options include:
-
-  * project-ansible
-  * project-devops
-  * project-infrastructure
+The repository **SHOULD** clearly state that it is a DevOps project by using one of the following suffixes:
+`ansible`, `devops` or `infrastructure`.
 
 ```
 .
 ├── docs/
 ├── environment/        # Host specific configuration
-├── files/              # Contains non template files, e.g. - SQL files, images, certificates
+├── files/              # MUST contain only static files, e.g. SQL files, images, certificates
 ├── playbooks/          # Collection of plays, groups multiple plays together
 ├── plays/              # Individual plays, each one handles a smaller part of host management
 ├── roles/              # Stores Ansible roles, handled by Ansible Galaxy and the contents should be git ignored
 ├── shellscripts/       # Helper shell scripts one might use for CI purposes or otherwise
-├── templates/          # Should only contain Jinja 2 template files
+├── templates/          # MUST only contain dynamic files, that use the Jinja2 templating language
 ├── vars/               # Non-host specific variables
 ├── ansible.cfg
 ├── .ansible-lint
 ├── .gitignore          # a base .gitignore you are free to add additional rules to
-├── README.md           # Entry point to the documentation, should be a quick start and point to different pages in the docs folder
+├── README.md           # SHOULD be a quick start and point to different pages in the docs folder
 ├── requirements.yml
 ├── vault.secret
 └── Vagrantfile
