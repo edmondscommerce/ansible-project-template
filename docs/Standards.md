@@ -19,11 +19,39 @@ The goal is to establish a single standard approach to Ansible projects
 *   Protects as much as possible against gotchas and pitfalls
 *   Optimise for security and performance but above all it is optimised for legibility and clarity
 
-## Contents
+---
+
+## Repository name and folder Structure
+
+The repository should clearly indicate that it is an Ansible based dev ops project.
+Naming options include:
+
+  * project-ansible
+  * project-devops
+  * project-infrastructure
+
+```
+.
+├── docs/
+├── environment/        # Host specific configuration
+├── files/              # Contains non template files, e.g. - SQL files, images, certificates
+├── playbooks/          # Collection of plays, groups multiple plays together
+├── plays/              # Individual plays, each one handles a smaller part of host management
+├── roles/              # Stores Ansible roles, handled by Ansible Galaxy and the contents should be git ignored
+├── shellscripts/       # Helper shell scripts one might use for CI purposes or otherwise
+├── templates/          # Should only contain Jinja 2 template files
+├── vars/               # Non-host specific variables
+├── ansible.cfg
+├── .ansible-lint
+├── .gitignore          # a base .gitignore you are free to add additional rules to
+├── README.md           # Entry point to the documentation, should be a quick start and point to different pages in the docs folder
+├── requirements.yml
+├── vault.secret
+└── Vagrantfile
+```
 
 It is recommended that the following pages are read in the order below.
 
-* [Structure](./Standards/Structure.md)
 * [Variables](./Standards/Variables.md)
 * [Plays and Plabybooks](./Standards/Plays.md)
 * [Vault](./Standards/Vault.md)
