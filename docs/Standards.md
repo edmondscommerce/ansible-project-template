@@ -21,7 +21,10 @@ The goal is to establish a single standard approach to Ansible projects
 
 ---
 
-## Repository name and folder Structure
+ 1. [Repository name and folder Structure](#repository-structure)
+ 2. [Playbooks, Tasks and Roles](#playbooks-tasks-roles)
+
+## <a id="repository-structure">Repository name and folder Structure
 
 The repository should clearly indicate that it is an Ansible based dev ops project.
 Naming options include:
@@ -49,6 +52,19 @@ Naming options include:
 ├── vault.secret
 └── Vagrantfile
 ```
+
+## <a id="playbooks-tasks-roles"></a>Playbooks, Tasks and Roles
+
+ - All tasks **MUST** be named.
+ - The shell module **SHOULD NOT** be used. It can be used as a last resort when there is no appropriate
+   command/module.
+ - The `loop` directive is the only way you **SHOULD** loop in playbooks.
+ - Packages **MUST** be installed with the distribution agnostic `package` module.
+ - pre_task/post_task/roles directives **MUST NOT** be used. Use the `import_*`/`include_*` set of directives
+   instead.
+ - Jinja2 expressions **MUST NOT** be used as the content attribute of the copy directive. Create a template
+   file instead, and use the template module.
+
 
 It is recommended that the following pages are read in the order below.
 

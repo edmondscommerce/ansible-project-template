@@ -1,15 +1,5 @@
 # Playbooks and Plays
 
- - All tasks **MUST** be named.
- - The shell module **SHOULD NOT** be used. It can be used as a last resort when there is no appropriate
-   command/module.
- - The `loop` directive is the only way you **SHOULD** loop in playbooks.
- - Packages **MUST** be installed with the distribution agnostic `package` module.
- - pre_task/post_task/roles directives **MUST NOT** be used. Use the `import_*`/`include_*` set of directives
-   instead.
- - Jinja2 expressions **MUST NOT** be used as the content attribute of the copy directive. Create a template
-   file instead, and use the template module.
-
 ## File
 
 ```
