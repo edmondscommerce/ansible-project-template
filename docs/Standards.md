@@ -75,9 +75,13 @@ The repository **SHOULD** clearly state that it is a DevOps project by using one
 See the [best practice page](https://docs.ansible.com/ansible/latest/user_guide/playbooks_best_practices.html#variables-and-vaults) for more information
 It is recommended that the following pages are read in the order below.
 
-* [Variables](./Standards/Variables.md)
-* [Plays and Plabybooks](./Standards/Plays.md)
-* [Vault](./Standards/Vault.md)
-* [Roles and Dependencies](./Standards/Roles.md)
-* [Environment Management](./Standards/Environment.md)
-* [Quality Assurance and Continuous Integration](./Standards/QA-CI.md)
+---
+
+Further resources:
+
+  * [Variables](./Standards/Variables.md)
+  * [Plays and Plabybooks](./Standards/Plays.md)
+  * [Vault](./Standards/Vault.md)
+  * [Roles and Dependencies](./Standards/Roles.md)
+  * [Environment Management](./Standards/Environment.md)
+  * [Quality Assurance and Continuous Integration](./Standards/QA-CI.md)
