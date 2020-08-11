@@ -13,21 +13,25 @@ Naming options include:
 
 ## Project Structure
 
+
 ```
-docs/ # Project specific documentation
-files/ # Contains non template files, e.g. - SQL files, images, certificates
-roles/  # Stores Ansible roles, handled by Ansible Galaxy and the contents should be git ignored
-environment/ # Host specific configuration
-playbooks/ # Collection of plays, groups multiple plays together 
-plays/ # Individual plays, each one handles a smaller part of host management
-templates/ # Should only contain Jinja 2 template files
-vars/ # Non-host specific variables
-.gitignore
-ansible.cfg
-README.md # Entry point to the documentation, should be a quick start and point to different pages in the docs folder
-requirements.yml
-vault.secret
-Vagrantfile 
+.
+├── docs/
+├── environment/        # Host specific configuration
+├── files/              # Contains non template files, e.g. - SQL files, images, certificates
+├── playbooks/          # Collection of plays, groups multiple plays together
+├── plays/              # Individual plays, each one handles a smaller part of host management
+├── roles/              # Stores Ansible roles, handled by Ansible Galaxy and the contents should be git ignored
+├── shellscripts/       # Helper shell scripts one might use for CI purposes or otherwise
+├── templates/          # Should only contain Jinja 2 template files
+├── vars/               # Non-host specific variables
+├── ansible.cfg
+├── .ansible-lint
+├── .gitignore
+├── README.md           # Entry point to the documentation, should be a quick start and point to different pages in the docs folder
+├── requirements.yml
+├── vault.secret
+└── Vagrantfile
 ```
 
 ### Git Ignore file
