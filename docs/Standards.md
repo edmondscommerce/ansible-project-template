@@ -23,6 +23,7 @@ The goal is to establish a single standard approach to Ansible projects
 
  1. [Repository name and folder Structure](#repository-structure)
  2. [Playbooks, Tasks and Roles](#playbooks-tasks-roles)
+ 3. [Ansible Vault](#ansible-vault)
 
 ## <a id="repository-structure">Repository name and folder Structure
 
@@ -66,6 +67,16 @@ Naming options include:
    file instead, and use the template module.
 
 
+## <a id="ansible-vault"></a>Ansible Vault
+
+ - Vault data **SHOULD** be stored in a flat file (single encrypted vault), there can be multiple files in each host and group.
+ - Vault files **SHOULD** only be stored within the environment directory and nowhere else.
+ - Vault files **MUST NOT** be decrypted to edit, use the CLI edit commands. This is to avoid accidentally committing access credentials to Git
+ - All vault variables **MUST** be prefixed with `vault_` and then loaded directly into vars files.
+ - The files that load the vault variables can be group specific (e.g. - vars/mysql.yml, vars/nginx.yml).
+ - All vault files **MUST** be placed into the environment directory and be encrypted using the Ansible vault commands.
+
+See the [best practice page](https://docs.ansible.com/ansible/latest/user_guide/playbooks_best_practices.html#variables-and-vaults) for more information
 It is recommended that the following pages are read in the order below.
 
 * [Variables](./Standards/Variables.md)
