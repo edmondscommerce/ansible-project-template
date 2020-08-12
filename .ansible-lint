@@ -5,6 +5,7 @@ exclude_paths:
   - .github
   - shellscripts/
   - roles/
+  - ../
 parseable: true
 quiet: false
 use_default_rules: true
