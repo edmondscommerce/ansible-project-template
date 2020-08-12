@@ -21,11 +21,11 @@ The goal is to establish a single standard approach to Ansible projects
 
 ---
 
- 1. [Repository name and folder Structure](#repository-structure)
+ 1. [Repository name and folder Structure](#repository-name-and-folder-structure)
  2. [Playbooks, Tasks and Roles](#playbooks-tasks-roles)
  3. [Ansible Vault](#ansible-vault)
 
-## <a id="repository-structure">Repository name and folder Structure
+## Repository name and folder Structure
 
 The repository **SHOULD** clearly state that it is a DevOps project by using one of the following suffixes:
 `ansible`, `devops` or `infrastructure`.
@@ -50,7 +50,7 @@ The repository **SHOULD** clearly state that it is a DevOps project by using one
 └── Vagrantfile
 ```
 
-## <a id="playbooks-tasks-roles"></a>Playbooks, Tasks and Roles
+## Playbooks, Tasks and Roles
 
  - You **MUST** name to all tasks. [Ansible Docs - Always Name Tasks](always-name-tasks)
  - You **MUST** install packages using the distribution agnostic `package` module. [Unify Package
@@ -64,7 +64,7 @@ The repository **SHOULD** clearly state that it is a DevOps project by using one
  - You **SHOULD** use the `loop` directive. [Migrating from with_X to loop][migrating-from-with-to-loop]
 
 
-## <a id="ansible-vault"></a>Ansible Vault
+## Ansible Vault
 
  - You **MUST** store vault data in a flat file (single encrypted vault). There can be multiple files in each
    host and group.
