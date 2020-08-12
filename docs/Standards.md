@@ -71,8 +71,7 @@ The repository **SHOULD** clearly state that it is a DevOps project by using one
  - You **MUST** store vault file within the environment directory and nowhere else.
  - You **MUST** edit the encrypted vault fiels using the ansible-vault edit command. This is to avoid accidentally
    committing access credentials to git. [More information on Vault and it's usage](Standards/Vault.md)
- - You **MUST** prefix all variables with `vault_`
- - All vault variables **MUST** be prefixed with `vault_` and then loaded directly into vars files.
+ - You **MUST** prefix all variables with `vault_` and then reference them directly into vars files.
  - The files that load the vault variables can be group specific (e.g. - vars/mysql.yml, vars/nginx.yml).
 
 See the [best practice page][variables-and-vault] for more information
