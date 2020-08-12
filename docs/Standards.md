@@ -52,32 +52,34 @@ The repository **SHOULD** clearly state that it is a DevOps project by using one
 
 ## <a id="playbooks-tasks-roles"></a>Playbooks, Tasks and Roles
 
- - All tasks **MUST** be named.
- - The shell module **SHOULD NOT** be used. It can be used as a last resort when there is no appropriate
-   command/module.
- - The `loop` directive is the only way you **SHOULD** loop in playbooks.
- - Packages **MUST** be installed with the distribution agnostic `package` module.
- - pre_task/post_task/roles directives **MUST NOT** be used. Use the `import_*`/`include_*` set of directives
-   instead.
- - Jinja2 expressions **MUST NOT** be used as the content attribute of the copy directive. Create a template
-   file instead, and use the template module.
+ - You **MUST** name to all tasks. [Ansible Docs - Always Name Tasks](always-name-tasks)
+ - You **MUST** install packages using the distribution agnostic `package` module. [Unify Package
+   Installation](unify-package-installation)
+ - You **MUST** use the `import_*`/`include_*` modules instead of pre_task/post_task/roles directives.
+   [Ansible Docs - Including and Importing](including-and-importing)
+ - You **MUST** use jinja2 template files instead of jinja2 expressions within the content attribute of the
+   copy module. [Ansible Docs - Copy module](copy-module)
+ - You **SHOULD** use the shell module only when there is no appropriate Ansible module, or the command module
+   does not suffice.
+ - You **SHOULD** use the `loop` directive. [Migrating from with_X to loop][migrating-from-with-to-loop]
 
 
 ## <a id="ansible-vault"></a>Ansible Vault
 
- - Vault data **SHOULD** be stored in a flat file (single encrypted vault), there can be multiple files in each host and group.
- - Vault files **SHOULD** only be stored within the environment directory and nowhere else.
- - Vault files **MUST NOT** be decrypted to edit, use the CLI edit commands. This is to avoid accidentally committing access credentials to Git
+ - You **MUST** store vault data in a flat file (single encrypted vault). There can be multiple files in each
+   host and group.
+ - You **MUST** store vault file within the environment directory and nowhere else.
+ - You **MUST** edit the encrypted vault fiels using the ansible-vault edit command. This is to avoid accidentally
+   committing access credentials to git. [More information on Vault and it's usage](Standards/Vault.md)
+ - You **MUST** prefix all variables with `vault_`
  - All vault variables **MUST** be prefixed with `vault_` and then loaded directly into vars files.
  - The files that load the vault variables can be group specific (e.g. - vars/mysql.yml, vars/nginx.yml).
- - All vault files **MUST** be placed into the environment directory and be encrypted using the Ansible vault commands.
 
-See the [best practice page](https://docs.ansible.com/ansible/latest/user_guide/playbooks_best_practices.html#variables-and-vaults) for more information
-It is recommended that the following pages are read in the order below.
+See the [best practice page][variables-and-vault] for more information
 
 ---
 
-Further resources:
+Further resources. It is recommended that the following pages are read in the order below.
 
   * [Variables](./Standards/Variables.md)
   * [Plays and Plabybooks](./Standards/Plays.md)
@@ -85,3 +87,11 @@ Further resources:
   * [Roles and Dependencies](./Standards/Roles.md)
   * [Environment Management](./Standards/Environment.md)
   * [Quality Assurance and Continuous Integration](./Standards/QA-CI.md)
+
+
+[always-name-tasks]: https://docs.ansible.com/ansible/latest/user_guide/playbooks_best_practices.html#always-name-tasks
+[unify-package-installation]: https://radeksprta.eu/posts/make-ansible-playbook-distribution-agnostic/
+[including-and-importing]: https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_includes.html
+[copy-module]: https://docs.ansible.com/ansible/latest/modules/copy_module.html#synopsis
+[migration-from-with-to-loop]: https://docs.ansible.com/ansible/latest/user_guide/playbooks_loops.html#migrating-from-with-x-to-loop
+[variables-and-vault]: https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_includes.html
