@@ -52,13 +52,13 @@ The repository **SHOULD** clearly state that it is a DevOps project by using one
 
 ## Playbooks, Tasks and Roles
 
- - You **MUST** name to all tasks. [Ansible Docs - Always Name Tasks](always-name-tasks)
+ - You **MUST** name to all tasks. [Ansible Docs - Always Name Tasks][always-name-tasks]
  - You **MUST** install packages using the distribution agnostic `package` module. [Unify Package
-   Installation](unify-package-installation)
+   Installation][unify-package-installation]
  - You **MUST** use the `import_*`/`include_*` modules instead of pre_task/post_task/roles directives.
-   [Ansible Docs - Including and Importing](including-and-importing)
+   [Ansible Docs - Including and Importing][including-and-importing]
  - You **MUST** use jinja2 template files instead of jinja2 expressions within the content attribute of the
-   copy module. [Ansible Docs - Copy module](copy-module)
+   copy module. [Ansible Docs - Copy module][copy-module]
  - You **SHOULD** use the shell module only when there is no appropriate Ansible module, or the command module
    does not suffice.
  - You **SHOULD** use the `loop` directive. [Migrating from with_X to loop][migrating-from-with-to-loop]
