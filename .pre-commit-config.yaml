@@ -1,0 +1,18 @@
+- repo: local
+  hooks:
+    - id: ansible-lint
+      name: Ansible-lint
+      description: This hook runs ansible-lint.
+      entry: ansible-lint -c .ansible-lint --force-color
+      language: python
+      # do not pass files to ansible-lint, see:
+      # https://github.com/ansible/ansible-lint/issues/611
+      pass_filenames: false
+      always_run: true
+    - id: vault-sanity-check
+      name: Vault Sanity Check
+      description: This will check each vault file and ensure that it is encrypted
+      entry: shellscripts/sanityCheckVaultFiles.bash
+      language: script
+      pass_filenames: false
+      always_run: true

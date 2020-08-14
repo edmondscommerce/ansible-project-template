@@ -1,0 +1,5 @@
+# Use this file for installing your roles when you run the install roles playbook.
+
+#For none ec roles
+#- src: geerlingguy.repo-remi
+##- src: geerlingguy.git

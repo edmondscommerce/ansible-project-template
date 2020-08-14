@@ -1,0 +1,8 @@
+# This is a template, it does not do anything but models what var files should resemble using namespacing.
+
+mysql:
+  version: 5.7
+  databases:
+    - magento
+    - wordpress
+    - sylius

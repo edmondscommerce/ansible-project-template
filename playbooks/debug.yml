@@ -1,0 +1,8 @@
+# This can be used to test that ansible is setup correctly, that hosts are reachable and to gather facts about them
+- hosts: all
+
+  tasks:
+    - name: Useful task
+      debug:
+        msg: Hello world
+

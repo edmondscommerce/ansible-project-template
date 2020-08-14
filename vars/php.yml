@@ -1,0 +1,8 @@
+# This is a template, it does not do anything but models what var files should resemble using namespacing.
+
+php:
+  version: 7.4
+  modules:
+    - xdebug
+    - opcache
+  display_errors: true

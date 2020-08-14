@@ -1,0 +1,9 @@
+# Here is an example of a good start to a playbook
+- hosts: all
+  become: true
+  #ignore_errors: True
+
+  tasks:
+    - name: Useful task
+      debug:
+        msg: "Testing!"
