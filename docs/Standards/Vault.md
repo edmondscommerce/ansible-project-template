@@ -1,28 +1,8 @@
 # Vault
 
-## Rules
-
-*   Vault data should be stored in a flat file (single encrypted vault), there can be multiple files in each host and
-group.
-*   Vault files should only be stored within the environment directory and nowhere else.
-*   Vault files should never be decrypted to edit, use the CLI edit commands
-    *   This is to avoid accidentally committing access credentials to Git
-*   See the [best practice
-page](https://docs.ansible.com/ansible/latest/user_guide/playbooks_best_practices.html#variables-and-vaults) for more
-information
-
-
 ### Variables
 
-All vault variables should be prefixed with “vault_” and then loaded directly into vars files.
-
-The files that load the vault variables can be group specific (e.g. - vars/mysql.yml, vars/nginx.yml).
-
-All vault files should be placed into the environment directory and be encrypted using the Ansible vault commands.
-
-An example of a vault file can be seen in the [vault.yml](../../environment/vagrant/host_vars/vagrant-machine/vault.yml)
-file in the vagrant environment. It hold some example composer values that are read in the 
-[composer.yml](../../environment/vagrant/host_vars/vagrant-machine/composer.yml) file.
+An example of a vault file can be seen in the [vault.yml](../../environment/vagrant/host_vars/vagrant-machine/vault.yml) file in the vagrant environment. It hold some example composer values that are read in the [composer.yml](../../environment/vagrant/host_vars/vagrant-machine/composer.yml) file.
 
 To view these create a `vault.secret` file and put in a password of `password123` and then use the following command
 
