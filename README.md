@@ -6,3 +6,4 @@ This repo is based on the standard [Edmonds Commerce infrastructure project temp
 
 * [Setup](./docs/Setup.md)
 * [Standards and Rules](./docs/Standards.md)
+* [TroubleShooting](./docs/Troubleshooting.md)
